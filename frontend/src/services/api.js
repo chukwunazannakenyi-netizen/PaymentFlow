@@ -144,3 +144,9 @@ export const updateInstallment = (studentId, installmentIndex, data) =>
   api.patch(`/payment-plans/${studentId}/installment/${installmentIndex}`, data);
 export const cancelPaymentPlan = (studentId) =>
   api.delete(`/payment-plans/${studentId}`);
+
+// Fee structure management (edit, restore soft-deleted)
+export const updateFeeStructure = (className, data) =>
+  api.put(`/fees/${encodeURIComponent(className)}`, data);
+export const restoreFeeStructure = (className) =>
+  api.post(`/fees/${encodeURIComponent(className)}/restore`);
