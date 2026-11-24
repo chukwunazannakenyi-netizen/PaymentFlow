@@ -144,3 +144,11 @@ export const updateInstallment = (studentId, installmentIndex, data) =>
   api.patch(`/payment-plans/${studentId}/installment/${installmentIndex}`, data);
 export const cancelPaymentPlan = (studentId) =>
   api.delete(`/payment-plans/${studentId}`);
+
+// Bulk student import
+export const bulkImportStudents = (formData, { onUploadProgress, signal } = {}) =>
+  api.post("/students/bulk", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+    onUploadProgress,
+    signal,
+  });
